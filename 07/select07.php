@@ -1,5 +1,5 @@
 <?php
-
+//テスト２
 //DB接続
 try {
     $pdo = new
