@@ -1,0 +1,59 @@
+.headtitle{
+    font-size:22px;
+}
+
+
+.navi{
+    padding:20px; 
+}
+
+.item{
+    padding-left:20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+background{
+    color:#898989;
+}
+.list{
+    display: flex;
+    justify-content: space-around;
+}
+
+input{
+    border:2px #626262 solid;
+}
+
+h1{
+    text-align: center;
+}
+#picture{
+    max-width:auto;
+    height:400px;
+    align-content:center;
+}
+
+.title{
+    color:orangered;
+}
+
+#space{
+    color:#d9a5a5;
+}
+
+#sub{
+    color:aquamarine;
+}*/
