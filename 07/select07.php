@@ -1,5 +1,6 @@
 <?php
 //テスト２
+//testブランチへコメント
 //DB接続
 try {
     $pdo = new
