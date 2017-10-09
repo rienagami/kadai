@@ -1,4 +1,31 @@
 <?php
+if(
+!isset($_POST["releasedate"]) ||
+$_POST["releasedate"]=="" ||
+    
+!isset($_POST["music"]) ||
+$_POST["music"]=="" ||
+    
+!isset($_POST["player"]) ||
+$_POST["player"]=="" ||
+    
+!isset($_POST["writer"]) ||
+$_POST["writer"]=="" ||
+
+!isset($_POST["composer"]) ||
+$_POST["composer"]=="" ||
+    
+!isset($_POST["album"]) ||
+$_POST["album"]=="" ||
+    
+!isset($_POST["tieup"]) ||
+$_POST["tieup"]==""
+
+){
+    exit('ParamError');
+}
+
+
 //１.POST受信
 $releasedate  = $_POST["releasedate"];
 $music    = $_POST["music"];
@@ -38,7 +65,7 @@ if($status==false){
     $error = $stmt->errorInfo();
     exit("QueryError:".$error[2]);
 }else{
-    header("Location: index07.php");//Locationとindexの間は必ずスペースが必要
+    header("Location: index.php");//Locationとindexの間は必ずスペースが必要
     exit;
 }
 ?>

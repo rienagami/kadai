@@ -14,7 +14,7 @@
     <header>
         <nav>
             <div class=navi>
-                <div><a class="headtitle" href="select07.php">データ一覧</a></div>
+                <div><a class="headtitle" href="select.php">データ一覧</a></div>
             </div>
         </nav>
     </header>
@@ -22,7 +22,7 @@
 
     <!--ここからメイン   -->
 <!--actionで情報の送り先を指定する。この場合はinsert07.phpを指定している-->
-    <form method="post" action="insert07.php">
+    <form method="post" action="insert.php">
         <div class="item">
 <!--fieldsetタグとは何か、後で調べる-->
             <fieldset>

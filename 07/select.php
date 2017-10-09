@@ -6,7 +6,7 @@ try {
     $pdo = new
     PDO('mysql:dbname=archive_db_34;charset=utf8;host=localhost','root','');
 } catch (PDOException $e) {
-  exit('DbConnectError:'.$e->getMessage());
+  exit('データベースに接続できませんでした。'.$e->getMessage());
 }
 
 
@@ -26,7 +26,7 @@ try {
 //archive_an_tableを指定
 //ORDER BY id DESCとは・・・昇順(ASC)と降順(DESC)の意味
 //だからここではDESCを指定しているのでIDが降順で表示することを指定している？？
-$stmt = $pdo->prepare("SELECT*FROM archive_an_table ORDER BY id DESC");
+$stmt = $pdo->prepare("SELECT*FROM archive_an_table");
 
 //statusという変数を宣言
     
@@ -47,16 +47,34 @@ $status = $stmt->execute();//execute=実行します
 $view = "";
 if($status==false){
    $error = $stmt->errorInfo();
-   exit("QueryError:".$error[2]);
+   exit("ErrorQuery:".$error[2]);
 }else{
 
 //セレクトデータの数だけ自動でループしてくれる・・・らしい。ん？どういう事？
 //「->」とはオブジェクト（クラス）のメソッドやフィールド変数を参照するための演算子らしい。fetchは「取ってくる、連れてくる」という意味
-while($r = $stmt->fetch(PDO::FETCH_ASSOC)){
-    
+while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
     $view .='<p>';
-    $view .= $r["releasedate"]."　".$r["music"]."　".$r["player"]."　".$r["tieup"];
+    $view .='<a href="detail.php?
+    id='.$result["id"].'">';
+    
+    $view .= $result["music"].$result["player"].$result["writer"].$result["composer"].$result["tieup"]."
+    [".$result["indate"]."]<br>";
+   
+    
+    
+    $view .= '</a>　'; 
+    
+    
+    $view .='<a href="delete.php?
+    id='.$result["id"].'">';
+    $view .='[削除]';
+    $view .='</a>';
+    
     $view .='</p>';
+        
+    
+//    $r["releasedate"]."　".$r["music"]."　".$r["player"]."　".$r["tieup"];
+//    $view .='</p>';
 }
 }
 
@@ -103,7 +121,7 @@ while($r = $stmt->fetch(PDO::FETCH_ASSOC)){
             <nav>
                 <div>
                     <div class=navi>
-                        <a class="headtitle" href="index07.php">登録画面へ</a>
+                        <a class="headtitle" href="index.php">登録画面へ</a>
                     </div>
                 </div>
             </nav>
